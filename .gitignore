@@ -1,5 +1,5 @@
 node_modules
+data
 *.env
-postgres-data
-postgres/*.crt
-postgres/*.key
+*.crt
+*.key
