@@ -4,7 +4,7 @@ const app = express();
 const { PORT, DATABASE_URL, NODE_ENV } = process.env;
 const isProduction = NODE_ENV === 'production';
 
-app.get('/', (req, res) => res.send('Hello world 7'));
+app.get('/', (req, res) => res.send('Hello world 8'));
 app.get('/pg', (req, res) => {
   client.query('SELECT $1::text as message', ['Hello world!'], (err, dbres) => {
     client.end();

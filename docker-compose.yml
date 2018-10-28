@@ -2,7 +2,9 @@ version: "3.2"
 
 services:
   api:
-    build: ./infra/node
+    build: 
+      context: .
+      dockerfile: ./infra/node/Dockerfile
     volumes:
       - .:/app
     command: npm run dev
@@ -13,7 +15,9 @@ services:
     depends_on:
       - db
   db:
-    build: ./infra/postgres
+    build: 
+      context: .
+      dockerfile: ./infra/postgres/Dockerfile
     # command: -c ssl=on
     restart: on-failure
     env_file:
