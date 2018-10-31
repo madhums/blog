@@ -1,11 +1,17 @@
 {
   "name": "blog-api",
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "nodemon -L server/index.js"
+    "start": "npm run db:migrate:run && node server.js",
+    "dev": "npm run db:migrate:run && nodemon -L server.js",
+    "db:seed:make": "knex seed:make",
+    "db:seed:run": "knex seed:run",
+    "db:migrate:make": "knex migrate:make",
+    "db:migrate:run": "knex migrate:latest"
   },
   "dependencies": {
     "express": "latest",
+    "knex": "^0.15.2",
+    "objection": "^1.4.0",
     "pg": "latest"
   },
   "devDependencies": {
