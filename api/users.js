@@ -9,7 +9,7 @@ module.exports = {
 };
 
 async function load(req, res, next, id) {
-  req.user = await User.query().where('id', id);
+  req.user = await User.query().findOne('id', id);
   next();
 }
 
