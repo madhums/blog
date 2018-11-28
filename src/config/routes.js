@@ -5,6 +5,7 @@ const users = require('../api/users');
 
 router.param('user_id', users.load);
 router
+  .get('/users', users.list)
   .route('/users/:user_id')
   .get(users.show)
   .put(users.update)
