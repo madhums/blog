@@ -38,7 +38,7 @@ If you are interested with one without objection.js and only knex, take a look a
 Todo:
 
 - [ ] Add articles and comments
-- [ ] Plug graphql and its playground
+- [x] Plug graphql and its playground (This should now be available at `/graphql`)
 - [ ] Docker pre-deployment
     - [ ] See if there are any good logging solutions
     - [ ] Auto scaling and cluster management using kubernetes (also see if there are any visual solutions)
