@@ -1,0 +1,18 @@
+scalar Date
+
+type Query {
+  users: [User]!
+}
+
+type Mutation {
+  create_user(first_name: String!, last_name: String): User!
+  remove_user(id: ID!): [User]!
+}
+
+type User {
+  id: ID
+  first_name: String!
+  last_name: String
+  created_at: Date!
+  updated_at: Date!
+}

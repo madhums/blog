@@ -1,6 +1,7 @@
 const express = require('express');
 const { Model } = require('objection');
 const morgan = require('morgan');
+const fs = require('fs');
 const { ApolloServer, gql } = require('apollo-server-express');
 const db = require('./config/db');
 
@@ -11,22 +12,13 @@ Model.knex(db);
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  type Query {
-    hello: String
-  }
+  ${fs.readFileSync(__dirname.concat('/graphql/schema.gql'), 'utf8')}
 `;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
+const resolvers = require('./graphql/resolvers');
 const server = new ApolloServer({ typeDefs, resolvers });
 server.applyMiddleware({ app });
 
-const v1 = require('./config/routes');
 app.use(morgan('tiny'));
-app.use('/api/v1', v1);
 
 function start() {
   console.log('Connected to database');
