@@ -4,14 +4,14 @@ services:
   api:
     build: 
       context: .
-      dockerfile: ./infra/node/Dockerfile
+      dockerfile: ./docker/node/Dockerfile
     volumes:
     # https://stackoverflow.com/a/32785014/232619
-      - ./src:/app
+      - .:/app
       - /app/node_modules
     command: /usr/local/wait-for-it.sh postgres:5432 -- npm run dev
     env_file: 
-      - infra/node/api.env
+      - docker/node/api.env
     ports:
       - 3000:80
     depends_on:
@@ -19,11 +19,11 @@ services:
   postgres:
     build: 
       context: .
-      dockerfile: ./infra/postgres/Dockerfile
+      dockerfile: ./docker/postgres/Dockerfile
     # command: -c ssl=on
     restart: on-failure
     env_file:
-      - infra/postgres/db.env
+      - docker/postgres/db.env
     ports:
       - 5432:5432
     volumes:
